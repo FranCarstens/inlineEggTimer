@@ -1,0 +1,13 @@
+{
+	"name": "Egg Timer",
+	"description": "Replace recipe cooking times with a convenient countdown timer.",
+	"version": "1.0",
+	"content_scripts": [
+		{
+			
+			"matches": ["*://*.allrecipes.com/*", "*://*.epicurious.com/*"],
+			"js": ["script.js"]
+		}
+	],
+	"manifest_version": 2
+}
