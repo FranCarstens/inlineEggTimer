@@ -40,19 +40,39 @@ function formatTimer(timeTotal) {
 
 }
 
+function soundAlarm(et) {
+
+	var i = 0
+	document.addEventListener(et, function() {i = 25})
+	setInterval(function() {
+		if (i < 30) {
+			var file = chrome.extension.getURL('loud.mp3');		
+			var audio = new Audio(file)
+			console.log(audio)
+			audio.play()
+			i ++
+		}
+	}, 1000)
+
+}
+
 function runTimer(e) {
 	console.log('Timer Active')
 	duration = e.target.attributes.name.value
 	console.log(duration)
 	setInterval(function() {
 
-		e.target.innerHTML = formatTimer(duration)
-		duration --
+		if (duration >= 0) {
+			e.target.innerHTML = formatTimer(duration)
+			duration --
 
-		if (duration < 1) { 
-			soundAlarm() 
-			return
+			if (duration < 1) { 
+				soundAlarm(e.target)
+				return
+			}
+			console.log(duration)
 		}
+		else return
 
 	}, 1000);
 
@@ -61,7 +81,7 @@ function runTimer(e) {
 function inlineTimer(durationStr, tid) {
 	
 	var duration = toSeconds(durationStr)
-	return `${durationStr}<div class="timer" id="timer_${tid}" style="display:none" name="${duration}">${formatTimer(duration)}</div>`
+	return `${durationStr}<div class="timer" id="timer_${tid}" style="display:none;" name="${duration}">${formatTimer(duration)}</div>`
 
 }
 
@@ -82,7 +102,7 @@ function initiateRecipeTimers( element ) {
 
 }
 
-function initObserver() {
+function initObserver() { // from https://github.com/mrdoob/clickbait-stopper
 	const observer = new MutationObserver( function ( mutations ) {
 		mutations.forEach( function ( mutation ) {
 			mutation.addedNodes.forEach( function ( node ) {
@@ -101,7 +121,7 @@ function startListening() {
 	document.querySelector('[id^="timer_"]').addEventListener('click', runTimer)
 }
 function showTimers() {
-	document.querySelector('[id^="timer_"]').style = 'display:inline-block'
+	document.querySelector('[id^="timer_"]').style = 'display:inline-block; background-color: black; padding: 0 5px; margin:0 5px; color: white; cursor: pointer;'
 }
 
 initiateRecipeTimers( document.body );

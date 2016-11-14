@@ -9,5 +9,6 @@
 			"js": ["script.js"]
 		}
 	],
-	"manifest_version": 2
+	"manifest_version": 2,
+	"web_accessible_resources": ["loud.mp3"]
 }
