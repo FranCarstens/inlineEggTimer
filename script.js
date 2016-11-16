@@ -57,47 +57,52 @@ function soundAlarm(et) {
 }
 
 function runTimer(e) {
-	console.log('Timer Active')
-	duration = e.target.attributes.name.value
-	console.log(duration)
-	setInterval(function() {
+	console.log('clicked', e.target.id.substring(0,6) )
+	if ( e.target.id.substring(0,6) === 'timer_' ) {
+		console.log('Timer Active')
+		let duration = e.target.attributes.name.value
+		e.target.className = 'counting'
+		console.log(duration)
+		setInterval(function() {
 
-		if (duration >= 0) {
-			e.target.innerHTML = formatTimer(duration)
-			duration --
+			if (duration >= 0) {
+				e.target.innerHTML = formatTimer(duration)
+				duration --
 
-			if (duration < 1) { 
-				soundAlarm(e.target)
-				return
+				if (duration < 1) { 
+					soundAlarm(e.target)
+					return
+				}
+				console.log(duration)
 			}
-			console.log(duration)
-		}
-		else return
+			else return
 
-	}, 1000);
-
+		}, 1000);
+	}
 }
 
 function inlineTimer(durationStr, tid) {
 	
 	var duration = toSeconds(durationStr)
-	return `${durationStr}<div class="timer" id="timer_${tid}" style="display:none;" name="${duration}">${formatTimer(duration)}</div>`
+	return `${durationStr}<div class="timer" id="timer_${tid}" name="${duration}">${formatTimer(duration)}</div>`
 
 }
 
 function addTimerIfCookTime( element, index ) {
-	var fullString = element.textContent.trim()
-	var durationStr = fetchDuration( fullString )
-	var tid = index
-	if ( durationStr ) {
-		element.innerHTML = fullString.replace(durationStr, inlineTimer(durationStr, tid))
+	if (element.children.length === 0) {
+		var fullString = element.textContent.trim()
+		var durationStr = fetchDuration( fullString )
+		var tid = index
+		if ( durationStr ) {
+			element.innerHTML = fullString.replace(durationStr, inlineTimer(durationStr, tid))
+		}
 	}
 }
 
 
 function initiateRecipeTimers( element ) {
 
-	const elements = element.getElementsByTagName( 'li' );
+	const elements = element.getElementsByTagName( '*' );
 	[ ...elements ].forEach( addTimerIfCookTime );
 
 }
@@ -118,10 +123,10 @@ function initObserver() { // from https://github.com/mrdoob/clickbait-stopper
 
 function startListening() {
 	console.log('sup event listeners?')
-	document.querySelector('[id^="timer_"]').addEventListener('click', runTimer)
+	document.addEventListener('click', runTimer)
 }
 function showTimers() {
-	document.querySelector('[id^="timer_"]').style = 'display:inline-block; background-color: black; padding: 0 5px; margin:0 5px; color: white; cursor: pointer;'
+	document.body.className += ' loaded'
 }
 
 initiateRecipeTimers( document.body );

@@ -5,10 +5,13 @@
 	"content_scripts": [
 		{
 			
-			"matches": ["*://*.allrecipes.com/*", "*://*.epicurious.com/*"],
-			"js": ["script.js"]
+			"matches": ["*://*.allrecipes.com/*", "*://*.epicurious.com/*", "*://*.marthastewart.com/*", "*://*.food.com/*" ],
+			"js": ["script.js"],
+			"css": ["timer.css"]
 		}
 	],
 	"manifest_version": 2,
 	"web_accessible_resources": ["loud.mp3"]
 }
+
+// alarm sound from http://www.orangefreesounds.com/

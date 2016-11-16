@@ -1,0 +1,16 @@
+body.loaded [id^="timer_"] {
+	display:inline-block;
+}
+
+[id^="timer_"] {
+	display: none;
+	background-color: black;
+	padding: 0 5px;
+	margin:0 5px;
+	color: white;
+	cursor: pointer;
+}
+
+[id^="timer_"].counting {
+	background-color: red;
+}
