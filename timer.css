@@ -5,7 +5,7 @@ body.loaded [id^="timer_"] {
 [id^="timer_"] {
 	display: none;
 	background-color: black;
-	padding: 0 5px;
+	padding: 0 0 0 5px;
 	margin:0 5px;
 	color: white;
 	cursor: pointer;
@@ -13,4 +13,24 @@ body.loaded [id^="timer_"] {
 
 [id^="timer_"].counting {
 	background-color: red;
+}
+.reset, .stop {
+	height: 100%;
+	width: 1.75rem;
+	display: inline-block;
+	text-align: center;
+	border-left: 1px solid #EEE;
+}
+.reset {
+	margin-left: 5px;
+    background-color: #0E5523;
+}
+.reset:hover {
+	background-color: #B0C47F;
+}
+.stop {
+	background-color: #550E0E;
+}
+.stop:hover {
+	background-color: #751313;
 }

@@ -43,6 +43,7 @@ function formatTimer(timeTotal) {
 function soundAlarm(et) {
 
 	var i = 0
+	console.log(et)
 	document.addEventListener(et, function() {i = 25})
 	setInterval(function() {
 		if (i < 30) {
@@ -84,7 +85,7 @@ function runTimer(e) {
 function inlineTimer(durationStr, tid) {
 	
 	var duration = toSeconds(durationStr)
-	return `${durationStr}<div class="timer" id="timer_${tid}" name="${duration}">${formatTimer(duration)}</div>`
+	return `${durationStr}<div class="timer" id="timer_${tid}" name="${duration}">${formatTimer(duration)}<span class="reset">r</span><span class="stop">s</span></div>`
 
 }
 

@@ -5,7 +5,8 @@
 	"content_scripts": [
 		{
 			
-			"matches": ["*://*.allrecipes.com/*", "*://*.epicurious.com/*", "*://*.marthastewart.com/*", "*://*.food.com/*" ],
+			"matches": ["*://*.allrecipes.com/*", "*://*.epicurious.com/*", "*://*.marthastewart.com/*",
+				"*://*.food.com/*", "*://*.foodnetwork.com/*", "*://*.myrecipes.com/*", "*://*.yummly.com/*", "*://cooking.nytimes.com/*" ],
 			"js": ["script.js"],
 			"css": ["timer.css"]
 		}
