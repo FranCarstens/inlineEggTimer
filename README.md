@@ -2,7 +2,7 @@
 
 I love cooking. When I hit the kitchen you can expect some frenetic activity to take place; which is why I'm always running out of timers. As the various delicacies cooking, baking or cooling down start stacking up my microwave and oven timers just don't cut it -- which is why I wrote this little chrome extension.
 
-The *Inline Egg Timer* simply looks for time instances on the page and appends a clean, non-intrisive egg timer on the same line.
+The *Inline Egg Timer* simply looks for time instances on the page and appends a clean, non-intrusive countdown timer on the same line.
 
 *Caveat - this extension is under development and has a number of incomplete features.*
 
