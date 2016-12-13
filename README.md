@@ -8,7 +8,7 @@ The *Inline Egg Timer* simply looks for time instances on the page and appends a
 
 ## Currently Works In
 
-For simplicity's sake the timer currently works on a limited number of websites. Adding additional sites is as easy as editing manifest.json file.
+For simplicity's sake the timer currently works on a limited number of websites. Adding additional sites is as easy as editing the manifest.json file.
 
 * allrecipes.com
 * epicurious.com
